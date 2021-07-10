@@ -1,0 +1,25 @@
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">PayApp</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home
+           <span class="sr-only" routerLink="/">(current)</span>
+
+        </a>
+     </li>
+     <li class="nav-item" *ngIf="isUserLoggedIn">
+          <a class="nav-link" routerLink="/logout">Logout</a>
+     </li>
+     <li class="nav-item" *ngIf="isUserLoggedIn == null">
+        <a class="nav-link" routerLink="/login">Login</a>
+     </li>
+     <li class="nav-item" *ngIf="isUserLoggedIn == null">
+        <a class="nav-link" routerLink="/register">Register</a>
+     </li>
+    </ul>
+  </div>
+<router-outlet></router-outlet>
