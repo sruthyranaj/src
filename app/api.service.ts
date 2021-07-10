@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,11 @@ export class ApiService {
       },
       (error) => {                              //Error callback
         console.error('error caught in component')
+        this._flashMessagesService.show('Failed to login', { cssClass: 'alert-danger', timeout: 5000 });
+        return false
         //throw error;   //You can also throw the error to a global error handler
       });
   }
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private _flashMessagesService: FlashMessagesService) { }
 }

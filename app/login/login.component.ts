@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
       });
    }
 
+   
+
    onClickSubmit(data: any) {
       this.userName = data.userName;
       this.password = data.password;
@@ -31,7 +33,6 @@ export class LoginComponent implements OnInit {
       console.log("Login page: " + this.userName);
       console.log("Login page: " + this.password);
 
-      let response = this.authService.login(this.userName, this.password)
-      console.log(response)
+      this.authService.login(this.userName, this.password)
    }
 }
