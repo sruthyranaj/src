@@ -13,4 +13,12 @@
 <body>
   <app-root></app-root>
 </body>
+<script>
+  $(document).on("click", ".nav li", function() {
+    console.log("klkl")
+    $(".nav li").removeClass("active");
+    $(this).addClass("active");
+  });
+
+</script>
 </html>
