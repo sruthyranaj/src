@@ -11,16 +11,28 @@
 
         </a>
      </li>
-     <li class="nav-item" *ngIf="isUserLoggedIn">
-          <a class="nav-link" routerLink="/logout">Logout</a>
-     </li>
      <li class="nav-item" *ngIf="isUserLoggedIn == null">
         <a class="nav-link" routerLink="/login">Login</a>
      </li>
      <li class="nav-item" *ngIf="isUserLoggedIn == null">
         <a class="nav-link" routerLink="/register">Register</a>
      </li>
+     <li class="nav-item" *ngIf="isUserLoggedIn">
+      <a class="nav-link" routerLink="/invoices">Invoices</a>
+      </li>
+      <li class="nav-item" *ngIf="isUserLoggedIn">
+      <a class="nav-link" routerLink="/add_invoices"> Add Invoices</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav" style="float:right">
+      <li class="nav-item" *ngIf="isUserLoggedIn">
+        <a>Hi, {{username}}</a>
+      </li>
+      <li class="nav-item" *ngIf="isUserLoggedIn">
+        <a class="nav-link" routerLink="/logout">Logout</a>
+      </li>
     </ul>
   </div>
-  <flash-messages></flash-messages>
+</nav>
 <router-outlet></router-outlet>
+<flash-messages></flash-messages>

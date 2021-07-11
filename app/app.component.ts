@@ -6,13 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit    {
-  
+export class AppComponent implements OnInit {
+
   title = 'pay-app';
   isUserLoggedIn: string;
-
+  username: string;
   ngOnInit() {
+    // get login information from local storage to set the menu items
     this.isUserLoggedIn = localStorage.getItem("isUserLoggedIn")
-    console.log("log", localStorage.getItem("isUserLoggedIn"))
- }
+    this.username = localStorage.getItem("user")
+  }
 }

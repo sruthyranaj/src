@@ -1,0 +1,10 @@
+td
+{
+ max-width: 100px;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ overflow-wrap: break-word;
+}
+.thead-dark{
+    background-color: #f8f8f8;
+}

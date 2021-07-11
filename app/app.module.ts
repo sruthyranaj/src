@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { InvoicesComponent } from './invoices/invoices.component';
+import { CookieService } from 'ngx-cookie-service';
+import { AddInvoicesComponent } from './add-invoices/add-invoices.component';
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import { RegisterComponent } from './register/register.component';
     PaymentComponent,
     LoginComponent,
     LogoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    InvoicesComponent,
+    AddInvoicesComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,7 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule,
     FlashMessagesModule.forRoot(),
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
