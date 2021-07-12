@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-
-import { AuthService } from './auth.service';
-
 @Injectable({
    providedIn: 'root'
 })
 export class PayappGuard implements CanActivate {
 
-   constructor(private authService: AuthService, private router: Router) {}
+   constructor(private router: Router) {}
 
    canActivate(
    next: ActivatedRouteSnapshot,
@@ -25,7 +21,7 @@ export class PayappGuard implements CanActivate {
 
          if(val != null && val == "true"){
             if(url == "/login")
-               this.router.parseUrl('/expenses');
+               this.router.parseUrl('/');
             else 
                return true;
          } else {
