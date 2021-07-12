@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'add_invoices', component: AddInvoicesComponent, canActivate:[PayappGuard] },
   { path: 'customers/:link', component: PaymentComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: '', redirectTo: '', pathMatch: 'full' }
+  { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 @NgModule({

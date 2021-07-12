@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem("isUserLoggedIn", "true")
             localStorage.setItem("user", data.username)
             localStorage.setItem("X-CSRFToken", resp["key"])
-            location.href = '/'
+            location.href = '/invoices'
          });
    }
 }
