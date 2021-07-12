@@ -7,7 +7,10 @@
             <div class="col-12" style="text-align: center;">
               <form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)" class="form-signin">
                 <h2 class="form-signin-heading">Add Invoices</h2>
-                <label for="client_name" class="sr-only">clientName</label>
+                <label for="client_name" class="sr-only">InvoiceNumber</label>
+                <input type="text" id="invoice_number" class="form-control" formControlName="invoice_number" placeholder="InvoiceNumber"
+                  required autofocus>
+                <label for="client_name" class="sr-only">ClientName</label>
                 <input type="text" id="client_name" class="form-control" formControlName="client_name" placeholder="ClientName"
                   required autofocus>
                 <label for="client_email" class="sr-only">Client Email</label>

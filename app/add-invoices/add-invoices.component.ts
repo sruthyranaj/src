@@ -15,6 +15,7 @@ export class AddInvoicesComponent implements OnInit {
 
   ngOnInit() {
     this.formData = new FormGroup({
+      invoice_number: new FormControl(),
       client_name: new FormControl(),
       client_email: new FormControl(),
       project_name: new FormControl(),
