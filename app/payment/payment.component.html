@@ -1,1 +1,15 @@
-<p>payment works!</p>
+<span *ngIf="error_message; then thenBlock else elseBlock"></span>
+<ng-template #thenBlock><span style="color: red"> This link is invalid or inactive</span></ng-template>
+<ng-template #elseBlock>
+    <div class="container mt-5">
+        <h2>Stripe Checkout</h2>
+        <div class="row mt-5">
+          <div class="col-md-4">
+            <button (click)="pay(amount)" class="btn btn-primary btn-block">Pay {{amount}}</button>
+          </div>  
+        </div>
+        <p class="mt-5">
+            Try it out using the test card number <b>4242 4242 4242 4242</b>, a random three-digit CVC number, any expiration date in the future, and a random five-digit U.S. ZIP code.
+        </p>
+      </div>
+</ng-template>
