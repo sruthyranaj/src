@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
    selector: 'app-logout',
@@ -7,11 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutComponent implements OnInit {
 
-   constructor() { }
+   constructor(private apiService: ApiService) { }
 
    ngOnInit() {
-      localStorage.clear();
-      location.href = '/'
+      this.apiService.post_api('rest-auth/logout/', {}, true)
+         .subscribe(resp => {
+            localStorage.clear();
+            location.href = '/'
+         });
    }
 
 }
