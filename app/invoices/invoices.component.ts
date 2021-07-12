@@ -11,9 +11,9 @@ export class InvoicesComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.get_api()
+    this.apiService.get_api('invoices/')
       .subscribe(resp => {
-        this.invoices = resp;
+        this.invoices = resp['body']
       });
   }
 }

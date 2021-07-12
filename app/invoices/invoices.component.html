@@ -4,6 +4,7 @@
 <table class="table table-bordered">
     <thead class="thead-dark">
       <tr>
+        <th scope="col">Id:</th>
         <th scope="col">InvoiceNo:</th>
         <th scope="col">Client Name</th>
         <th scope="col">Client Email</th>
@@ -15,11 +16,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of invoices">
-        <th scope="row">{{item.id}}</th>
+        <td>{{item.id}}</td>
+        <th scope="row">{{item.invoice_number}}</th>
         <td>{{item.client_name}}</td>
         <td>{{item.client_email}}</td>
         <td>{{item.project_name}}</td>
-        <td><span class="hover-parent">{{item.link}}</span><span class="hide">dsads</span></td>
+        <td>{{item.link}}</td>
         <td>{{item.created_at}}</td>
         <td><span *ngIf="item.status == true; then thenBlock else elseBlock"></span><ng-template #thenBlock>Active</ng-template><ng-template #elseBlock>Inactive</ng-template> </td>
       </tr>

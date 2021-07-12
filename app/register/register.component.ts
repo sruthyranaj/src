@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
       console.log("Login page: " + user.username);
       console.log("Login page: " + user.password1);
 
-      this.apiService.post_api('rest-auth/registration/', user)
+      this.apiService.post_api('rest-auth/registration/', user, false)
          .subscribe(resp => {
             this.formData.reset();
             this._flashMessagesService.show('successfully registered. Please login to continue', { cssClass: 'alert-success', timeout: 5000 });
