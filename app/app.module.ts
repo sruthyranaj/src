@@ -5,7 +5,6 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { PaymentComponent } from './payment/payment.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -19,7 +18,6 @@ import { AddInvoicesComponent } from './add-invoices/add-invoices.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     PaymentComponent,
     LoginComponent,
     LogoutComponent,
