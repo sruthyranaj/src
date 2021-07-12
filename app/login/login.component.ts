@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       console.log("Login page: " + data.password);
 
       // this.authService.login(this.userName, this.password)
-      this.apiService.post_api('rest-auth/login/', data)
+      this.apiService.post_api('rest-auth/login/', data, false)
          .subscribe(resp => {
             console.log(resp)
             localStorage.setItem("isUserLoggedIn", "true")
