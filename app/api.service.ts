@@ -2,49 +2,65 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { map, tap, catchError } from 'rxjs/operators';
-import { CookieService } from 'ngx-cookie-service';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  httpPostOptions =
+  constructor(private httpClient: HttpClient) { }
+  httpPostOptions;
+
+  httpPostOptions_without_cred =
+    {
+      headers:
+        new HttpHeaders(
+          {
+            "Content-Type": "application/json"
+          }),
+          observe: 'response' as 'response'
+    };
+
+    csrftoken = this.getCookie('csrftoken');
+    httpPostOptions_with_cred =
     {
       headers:
         new HttpHeaders(
           {
             "Content-Type": "application/json",
-          })
+            'X-CSRFToken': this.csrftoken
+          }),
+          withCredentials: true,
+          observe: 'response' as 'response'
     };
+
 
   baseUrl: string = 'http://127.0.0.1:8000/'
 
-  public post_api(endpoint, post_data, with_credenttials = false) {
-
-    if (with_credenttials == true) {
-      const csrftoken = this.getCookie('csrftoken');
-      this.httpPostOptions =
-      {
-        headers:
-          new HttpHeaders(
-            {
-              "Content-Type": "application/json",
-              'X-CSRFToken': csrftoken
-            }),
-      };
-      this.httpPostOptions["withCredentials"] = true;
+  public post_api(endpoint, post_data, with_credentials = false) {
+    if (with_credentials == true) {
+      this.httpPostOptions = this.httpPostOptions_with_cred
+    }
+    else {
+      this.httpPostOptions = this.httpPostOptions_without_cred
     }
 
-    return this.httpClient.post<any>(this.baseUrl + endpoint, post_data, this.httpPostOptions);
+    return this.httpClient.post<any>(this.baseUrl + endpoint, post_data, this.httpPostOptions).pipe(
+      catchError(this.handleError),
+    );
   }
 
-  get_api() {
-    this.httpPostOptions["withCredentials"] = true;
-    return this.httpClient.get<any>(this.baseUrl+'invoices/', this.httpPostOptions);
+  get_api(endpoint, with_cred=true) {
+    if(with_cred){
+      this.httpPostOptions = this.httpPostOptions_with_cred
+    }else{
+      this.httpPostOptions = this.httpPostOptions_without_cred
+    }
+    return this.httpClient.get<any>(this.baseUrl + endpoint, this.httpPostOptions).pipe(
+      catchError(this.handleError)
+    );
   }
-
-  constructor(private httpClient: HttpClient, private _flashMessagesService: FlashMessagesService, private cookieService: CookieService) { }
 
   getCookie(name) {
     let cookieValue = null;
@@ -62,4 +78,26 @@ export class ApiService {
     return cookieValue;
   }
 
+  handleError(error) {
+
+    let errorMessage = '';
+
+    if (error.error instanceof ErrorEvent) {
+
+      // client-side error
+
+      errorMessage = `Error: ${error.error.message}`;
+
+    } else {
+
+      // server-side error
+
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      window.alert(errorMessage);
+    }
+
+    return throwError(errorMessage);
+
+  }
 }
+
