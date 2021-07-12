@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'invoices', component: InvoicesComponent, canActivate:[PayappGuard] },
   { path: 'add_invoices', component: AddInvoicesComponent, canActivate:[PayappGuard] },
   { path: 'customers/:link', component: PaymentComponent },
-  { path: 'logout', component: LogoutComponent },
+  { path: 'logout', component: LogoutComponent, canActivate:[PayappGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
 

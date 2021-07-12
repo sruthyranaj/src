@@ -50,7 +50,7 @@ export class PaymentComponent implements OnInit {
   }
 
   loadStripe() {
-
+    // method for loading strip payment form
     if (!window.document.getElementById('stripe-script')) {
       var s = window.document.createElement("script");
       s.id = "stripe-script";
